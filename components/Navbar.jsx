@@ -2,6 +2,7 @@ import React from "react";
 import MyContainer from "./MyContainer";
 import Logo from "@/components/Logo";
 import MyLinks from "./MyLinks";
+import Mybutton from "./Mybutton";
 
 export default function Navbar() {
   const links = (
@@ -52,8 +53,8 @@ export default function Navbar() {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+        <div className="navbar-end gap-2">
+          <Mybutton href={"/login"}>Login</Mybutton>
         </div>
       </MyContainer>
     </div>
