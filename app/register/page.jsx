@@ -13,7 +13,7 @@ export default function register() {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
   };
   return (
     <MyContainer className="flex min-h-screen items-center justify-center">
