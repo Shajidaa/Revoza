@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import MyContainer from "./MyContainer";
 import Logo from "@/components/Logo";
@@ -5,6 +7,7 @@ import MyLinks from "./MyLinks";
 import Mybutton from "./Mybutton";
 
 export default function Navbar() {
+  // const { data } = useSession();
   const links = (
     <>
       {" "}
@@ -16,6 +19,9 @@ export default function Navbar() {
       </li>
       <li>
         <MyLinks href="/about">About</MyLinks>
+      </li>
+      <li>
+        <MyLinks href="/Dashboard">Dashboard</MyLinks>
       </li>
     </>
   );
@@ -55,6 +61,16 @@ export default function Navbar() {
         </div>
         <div className="navbar-end gap-2">
           <Mybutton href={"/login"}>Login</Mybutton>
+          {/* {data?.user ? (
+            <button onClick={() => signOut({ callbackUrl: "/login" })}>
+              Logout
+            </button>
+          ) : (
+            <>
+              <Link href="/login">Login</Link> |{" "}
+              <Link href="/register">Register</Link>
+            </>
+          )} */}
         </div>
       </MyContainer>
     </div>

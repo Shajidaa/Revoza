@@ -1,85 +1,80 @@
 import Image from "next/image";
-import { FaStar, FaShoppingCart } from "react-icons/fa";
-import image from "../public/hero-image 1.png";
+import { FaStar } from "react-icons/fa";
+
 export default function ProductCard({ singleProduct }) {
   const {
     title,
-    description,
     price,
-    discountPercentage,
     rating,
-
     brand,
     category,
-    availabilityStatus,
-    shippingInformation,
+    description,
+    image,
+    discountPercent,
   } = singleProduct;
 
-  const discountedPrice = (price - (price * discountPercentage) / 100).toFixed(
-    2
-  );
+  // Discount price calculation
+  const discountedPrice = discountPercent
+    ? (price - price * (discountPercent / 100)).toFixed(2)
+    : price;
 
   return (
-    <div
-      className="relative w-full  bg-white
-     rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
-    >
-      {/* Discount Badge */}
-      {discountPercentage > 0 && (
-        <div
-          className="absolute top-3 left-3
-         bg-yellow-600 text-white text-xs font-bold z-10 px-2 py-1 rounded"
-        >
-          {discountPercentage.toFixed(0)}% OFF
+    <div className="card bg-base-100 shadow-md relative p-3 hover:shadow-xl transition">
+      {/* --- Discount Badge --- */}
+      {discountPercent > 0 && (
+        <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+          {discountPercent}% OFF
         </div>
       )}
 
       {/* Product Image */}
-      <div className="relative w-full h-48">
+      <figure className="px-5 pt-5 h-96 max-w-96">
         <Image
           src={image}
           alt={title}
-          fill // fills parent container
-          className="object-cover"
+          width={300}
+          height={300}
+          className="rounded object-contain"
         />
-      </div>
+      </figure>
 
-      <div className="p-4 flex flex-col gap-2">
-        {/* Title */}
-        <h2 className="text-lg font-bold text-gray-800">{title}</h2>
+      {/* Body */}
+      <div className="card-body p-4">
+        <div className="p-4 flex flex-col gap-2">
+          {/* Title */}
+          <h2 className="text-lg font-bold text-gray-800">{title}</h2>
 
-        {/* Description */}
-        <p className="text-sm text-gray-500 line-clamp-2">{description}</p>
+          {/* Description */}
+          <p className="text-sm text-gray-500 line-clamp-2">{description}</p>
 
-        {/* Price & Rating */}
-        <div className="flex items-center justify-between mt-2">
-          <div className="flex items-baseline gap-2">
-            <span className="text-xl font-bold text-gray-800">
-              ${discountedPrice}
-            </span>
-            {discountPercentage > 0 && (
-              <span className="text-sm line-through text-gray-400">
-                ${price}
-              </span>
-            )}
-          </div>
-          <span className="flex items-center gap-1 text-yellow-500 font-semibold">
+          {/* Price & Rating */}
+          <div className="flex items-center gap-1 text-yellow-500 font-semibold">
             <FaStar /> {rating.toFixed(1)}
-          </span>
+          </div>
         </div>
-
-        {/* Meta Info */}
-        <p className="text-xs text-gray-400">
-          {brand} • {category}
-        </p>
-        <p className="text-xs text-green-500">{availabilityStatus}</p>
-        <p className="text-xs text-purple-500">{shippingInformation}</p>
-
-        {/* Action Button */}
-        <button className="mt-3 w-full btn btn-primary btn-sm flex items-center justify-center gap-2">
-          View details
-        </button>
+        {/* Price */}
+        <div className="mt-1">
+          {discountPercent > 0 ? (
+            <div className="flex items-center gap-2">
+              <span className="text-lg font-bold text-primary">
+                Tk {discountedPrice}
+              </span>
+              <span className="line-through text-gray-400 text-sm">
+                Tk {price}
+              </span>
+            </div>
+          ) : (
+            <span className="text-lg font-bold text-primary">Tk {price}</span>
+          )}
+        </div>
       </div>
+      {/* Meta Info */}
+      <p className="text-xs text-gray-400">
+        {brand} • {category}
+      </p>
+      <button className="mt-3 w-full btn btn-primary btn-sm flex items-center justify-center gap-2">
+        View details
+      </button>
     </div>
   );
 }
