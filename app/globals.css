@@ -4,5 +4,5 @@
 @plugin "daisyui";
 
 .gradient {
-  @apply bg-linear-to-r from-[#A700F5] to-[#E9D5EB] btn
+  @apply bg-linear-to-r opacity-80 from-[#7500ac] to-[#e7d5eb] btn text-white text-base hover:scale-102 hover:transition-all hover:opacity-100
 }

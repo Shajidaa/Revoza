@@ -21,44 +21,48 @@ export default function ProductCard({ singleProduct }) {
     : price;
 
   return (
-    <div className="card bg-base-100 shadow-md relative p-3 hover:shadow-xl transition">
+    <div
+      className="bg-white shadow-md rounded-xl overflow-hidden relative 
+      transition-transform duration-300 hover:scale-[1.02] hover:shadow-2xl"
+    >
       {/* --- Discount Badge --- */}
       {discountPercent > 0 && (
-        <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+        <div className="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
           {discountPercent}% OFF
         </div>
       )}
 
-      {/* Product Image */}
-      <figure className="px-5 pt-5 h-96 max-w-96">
+      {/* --- Product Image --- */}
+      <div className="h-[200px] w-full overflow-hidden bg-gray-100">
         <Image
           src={image}
           alt={title}
-          width={300}
+          width={500}
           height={300}
-          className="rounded object-contain"
+          className="h-full w-full object-cover transition duration-300 hover:scale-110"
         />
-      </figure>
+      </div>
 
-      {/* Body */}
-      <div className="card-body p-4">
-        <div className="p-4 flex flex-col gap-2">
-          {/* Title */}
-          <h2 className="text-lg font-bold text-gray-800">{title}</h2>
+      {/* --- Card Body --- */}
+      <div className="p-4 flex flex-col gap-3">
+        {/* Title */}
+        <h2 className="text-lg font-bold text-gray-800 line-clamp-1">
+          {title}
+        </h2>
 
-          {/* Description */}
-          <p className="text-sm text-gray-500 line-clamp-2">{description}</p>
+        {/* Description */}
+        <p className="text-sm text-gray-500 line-clamp-2">{description}</p>
 
-          {/* Price & Rating */}
-          <div className="flex items-center gap-1 text-yellow-500 font-semibold">
-            <FaStar /> {rating}
-          </div>
+        {/* Rating */}
+        <div className="flex items-center gap-1 text-yellow-400 font-semibold">
+          <FaStar /> <span>{rating}</span>
         </div>
+
         {/* Price */}
-        <div className="mt-1">
+        <div>
           {discountPercent > 0 ? (
             <div className="flex items-center gap-2">
-              <span className="text-lg font-bold text-primary">
+              <span className="text-lg font-bold text-purple-600">
                 Tk {discountedPrice}
               </span>
               <span className="line-through text-gray-400 text-sm">
@@ -66,20 +70,22 @@ export default function ProductCard({ singleProduct }) {
               </span>
             </div>
           ) : (
-            <span className="text-lg font-bold text-primary">Tk {price}</span>
+            <span className="text-lg font-bold text-purple-600">
+              Tk {price}
+            </span>
           )}
         </div>
+
         {/* Meta Info */}
         <p className="text-xs text-gray-400">
           {brand} • {category}
         </p>
+
+        {/* Button */}
+        <Link href={`/products/${_id}`} className="mt-3 w-full gradient">
+          View details
+        </Link>
       </div>
-      <Link
-        href={`/products/${_id}`}
-        className="mt-3 w-full gradient btn-sm flex items-center justify-center gap-2"
-      >
-        View details
-      </Link>
     </div>
   );
 }
