@@ -1,3 +1,4 @@
+import BestSeller from "@/components/BestSeller";
 import HomeBanner from "@/components/HomeBanner";
 import LatestProduct from "@/components/LatestProduct";
 import PromoBanner from "@/components/PromoBanner";
@@ -10,6 +11,7 @@ export default function Home() {
       <PromoBanner></PromoBanner>
       <LatestProduct></LatestProduct>
       <ServiceSection></ServiceSection>
+      <BestSeller></BestSeller>
     </div>
   );
 }
