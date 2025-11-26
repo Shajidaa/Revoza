@@ -57,46 +57,61 @@ export default function ManageProduct() {
 
   return (
     <div className="p-4 max-w-7xl mx-auto min-h-dvh">
-      <h1 className="text-3xl font-bold text-center my-5">My Products</h1>
+      <h1 className="text-3xl font-bold text-center my-5 text-black">
+        My Products
+      </h1>
 
-      <table className="table w-full">
-        <thead>
-          <tr>
-            <th>SL No</th>
-            <th>Image</th>
-            <th>Title</th>
-            <th>Seller Email</th>
-            <th>Price</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product, index) => (
-            <tr key={product._id}>
-              <td>{index + 1}</td>
-              <td>
-                <Image
-                  src={product.image}
-                  width={40}
-                  height={40}
-                  alt={product.title}
-                />
-              </td>
-              <td>{product.title}</td>
-              <td>{product.sellerEmail}</td>
-              <td>৳{product.price}</td>
-              <td>
-                <button
-                  onClick={() => handleRemove(product._id)}
-                  className="btn btn-xs btn-error"
-                >
-                  <FaTrash /> Delete
-                </button>
-              </td>
+      <div className="overflow-x-auto rounded-2xl shadow-lg border border-purple-200">
+        <table className="table w-full">
+          <thead className="bg-purple-600 text-white">
+            <tr>
+              <th>SL No</th>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Seller Email</th>
+              <th>Price</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {products.map((product, index) => (
+              <tr
+                key={product._id}
+                className="hover:bg-purple-50 transition-all"
+              >
+                <td>{index + 1}</td>
+
+                <td>
+                  <Image
+                    src={product.image}
+                    width={40}
+                    height={40}
+                    alt={product.title}
+                    className="rounded-md border border-purple-200"
+                  />
+                </td>
+
+                <td className="font-medium text-purple-700">{product.title}</td>
+                <td>{product.sellerEmail}</td>
+
+                <td className="font-semibold text-purple-600">
+                  ৳{product.price}
+                </td>
+
+                <td>
+                  <button
+                    onClick={() => handleRemove(product._id)}
+                    className="btn btn-xs bg-red-600 text-white hover:bg-red-700 rounded-md"
+                  >
+                    <FaTrash />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

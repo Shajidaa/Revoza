@@ -12,5 +12,9 @@
 }
 
 .gradient {
-  @apply bg-linear-to-r opacity-80 from-[#7500ac] to-[#e7d5eb] btn text-white text-base hover:scale-102 hover:transition-all hover:opacity-100
+  @apply opacity-80 bg-linear-to-r from-[#7500ac] to-[#e7d5eb] btn text-white text-base hover:scale-102 hover:transition-all hover:opacity-100
+}
+
+.gradientBtn {
+  @apply opacity-80 bg-[#7500ac] btn text-white text-base hover:scale-102 hover:transition-all hover:opacity-100
 }

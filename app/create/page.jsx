@@ -51,35 +51,39 @@ export default function CreateProduct() {
 
       <Link
         href={"/products"}
-        className="flex items-center text-blue-600 dark:text-blue-400 hover:underline mb-4"
+        className="flex items-center text-purple-600 hover:underline mb-4"
       >
         <FaArrowLeft className="mr-2" size={20} /> Back to Products
       </Link>
 
-      <h2 className="text-2xl font-bold text-center mb-6">Add New Product</h2>
+      <h2 className="text-2xl font-bold text-center mb-6 text-black">
+        Add New Product
+      </h2>
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white  border border-gray-200  shadow-lg rounded-2xl p-8 space-y-4"
+        className="bg-white border border-purple-300 shadow-lg rounded-2xl p-8 space-y-4"
       >
         {/* Title + Category */}
         <div className="grid md:grid-cols-2 gap-4">
           <div>
-            <label className="label font-semibold">Title</label>
+            <label className="label font-semibold text-purple-700">Title</label>
             <input
               type="text"
               name="title"
               placeholder="e.g. Kindle Paperwhite"
               required
-              className="input input-bordered w-full dark:bg-gray-700 dark:text-white"
+              className="input input-bordered w-full"
             />
           </div>
           <div>
-            <label className="label font-semibold">Category</label>
+            <label className="label font-semibold text-purple-700">
+              Category
+            </label>
             <select
               name="category"
               required
-              className="select select-bordered w-full dark:bg-gray-700 dark:text-white"
+              className="select select-bordered w-full"
             >
               <option disabled value="">
                 Select Category
@@ -93,19 +97,35 @@ export default function CreateProduct() {
           </div>
         </div>
 
-        {/* Price + Rating */}
+        {/* Description */}
+        <div>
+          <label className="label font-semibold text-purple-700">
+            Description
+          </label>
+          <textarea
+            name="description"
+            placeholder="Write product details here..."
+            className="textarea textarea-bordered w-full"
+            rows={4}
+            required
+          />
+        </div>
+
+        {/* Price */}
         <div className="grid md:grid-cols-2 gap-4">
           <div className="relative">
-            <label className="label font-medium">Price ($)</label>
+            <label className="label font-medium text-purple-700">
+              Price ($)
+            </label>
             <div className="relative">
-              <FaDollarSign className="absolute left-3 top-3 text-gray-400 dark:text-gray-300" />
+              <FaDollarSign className="absolute left-3 top-3 text-gray-400" />
               <input
                 type="number"
                 step="0.01"
                 name="price"
                 placeholder="e.g. 179.99"
                 required
-                className="input input-bordered pl-10 w-full dark:bg-gray-700 dark:text-white"
+                className="input input-bordered pl-10 w-full"
               />
             </div>
           </div>
@@ -114,94 +134,100 @@ export default function CreateProduct() {
         {/* Stock + Brand */}
         <div className="grid md:grid-cols-2 gap-4">
           <div>
-            <label className="label font-medium">Stock</label>
+            <label className="label font-medium text-purple-700">Stock</label>
             <input
               type="number"
               name="stock"
               placeholder="e.g. 100"
               required
-              className="input input-bordered w-full dark:bg-gray-700 dark:text-white"
+              className="input input-bordered w-full"
             />
           </div>
           <div>
-            <label className="label font-medium">Brand</label>
+            <label className="label font-medium text-purple-700">Brand</label>
             <input
               type="text"
               name="brand"
               placeholder="e.g. Amazon"
-              className="input input-bordered w-full dark:bg-gray-700 dark:text-white"
+              className="input input-bordered w-full"
             />
           </div>
         </div>
 
         {/* Image URL */}
         <div>
-          <label className="label font-medium">Image URL</label>
+          <label className="label font-medium text-purple-700">Image URL</label>
           <div className="relative">
-            <FaImage className="absolute left-3 top-3 text-gray-400 dark:text-gray-300" />
+            <FaImage className="absolute left-3 top-3 text-gray-400" />
             <input
               type="url"
               name="image"
               placeholder="https://example.com/product.jpg"
-              className="input input-bordered pl-10 w-full dark:bg-gray-700 dark:text-white"
+              className="input input-bordered pl-10 w-full"
             />
           </div>
         </div>
 
         {/* Checkboxes */}
         <div className="flex gap-6">
-          <label className="flex items-center gap-2">
-            <input type="checkbox" name="bestSeller" />
-            Best Seller
+          <label className="flex items-center gap-2 text-purple-700">
+            <input type="checkbox" name="bestSeller" /> Best Seller
           </label>
-          <label className="flex items-center gap-2">
-            <input type="checkbox" name="topRated" />
-            Top Rated
+          <label className="flex items-center gap-2 text-purple-700">
+            <input type="checkbox" name="topRated" /> Top Rated
           </label>
         </div>
 
         {/* Seller Info */}
         <div className="grid md:grid-cols-2 gap-4">
           <div>
-            <label className="label font-medium">Seller Name</label>
+            <label className="label font-medium text-purple-700">
+              Seller Name
+            </label>
             <input
               type="text"
               name="sellerName"
               value={user?.displayName}
               readOnly
-              className="input input-bordered w-full dark:bg-gray-700 dark:text-white"
+              className="input input-bordered w-full bg-purple-50"
             />
           </div>
           <div>
-            <label className="label font-medium">Seller Email</label>
+            <label className="label font-medium text-purple-700">
+              Seller Email
+            </label>
             <input
               type="email"
               name="sellerEmail"
               value={user?.email}
               readOnly
-              className="input input-bordered w-full dark:bg-gray-700 dark:text-white"
+              className="input input-bordered w-full bg-purple-50"
             />
           </div>
         </div>
 
         <div>
-          <label className="label font-medium">Seller Photo URL</label>
+          <label className="label font-medium text-purple-700">
+            Seller Photo URL
+          </label>
           <input
             type="text"
             name="sellerPhoto"
             value={user?.photoURL}
             readOnly
-            className="input input-bordered w-full dark:bg-gray-700 dark:text-white"
+            className="input input-bordered w-full bg-purple-50"
           />
         </div>
 
         {/* Availability + Return Policy + Discount */}
         <div className="grid md:grid-cols-3 gap-4">
           <div>
-            <label className="label font-medium">Availability Status</label>
+            <label className="label font-medium text-purple-700">
+              Availability Status
+            </label>
             <select
               name="availabilityStatus"
-              className="select select-bordered w-full dark:bg-gray-700 dark:text-white"
+              className="select select-bordered w-full"
               defaultValue="In Stock"
             >
               <option value="In Stock">In Stock</option>
@@ -209,22 +235,26 @@ export default function CreateProduct() {
             </select>
           </div>
           <div>
-            <label className="label font-medium">Return Policy</label>
+            <label className="label font-medium text-purple-700">
+              Return Policy
+            </label>
             <input
               type="text"
               name="returnPolicy"
               placeholder="Return within 30 days"
-              className="input input-bordered w-full dark:bg-gray-700 dark:text-white"
+              className="input input-bordered w-full"
             />
           </div>
           <div>
-            <label className="label font-medium">Discount (%)</label>
+            <label className="label font-medium text-purple-700">
+              Discount (%)
+            </label>
             <input
               type="number"
               name="discountPercent"
               min="0"
               max="100"
-              className="input input-bordered w-full dark:bg-gray-700 dark:text-white"
+              className="input input-bordered w-full"
             />
           </div>
         </div>
@@ -232,7 +262,7 @@ export default function CreateProduct() {
         <div className="mt-6">
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+            className="w-full! gradient text-white py-2 rounded "
           >
             Add Product
           </button>

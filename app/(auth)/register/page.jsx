@@ -92,74 +92,66 @@ const Register = () => {
     <>
       <title>Register | Revoza</title>
 
-      <div className="flex flex-col-reverse lg:flex-row justify-center items-center gap-5 py-7 md:py-12 min-h-screen bg-sky-50 dark:bg-gray-900 transition-colors">
+      <div className="flex flex-col-reverse lg:flex-row justify-center items-center gap-5 py-7 md:py-12 min-h-screen bg-purple-50 transition-colors">
         <div className="flex lg:w-1/2 w-full justify-center items-center">
-          <div className="card w-full max-w-sm border border-sky-400 dark:border-sky-600 bg-white dark:bg-gray-800 shadow-2xl rounded-xl">
+          <div className="card w-full max-w-sm border border-purple-400 bg-white shadow-2xl rounded-xl">
             <div className="card-body">
-              <h1 className="text-2xl md:text-3xl font-bold text-center text-sky-600 dark:text-sky-400 mb-4">
+              <h1 className="text-2xl md:text-3xl font-bold text-center text-purple-600 mb-4">
                 Create your account
               </h1>
 
               <form onSubmit={handleCreateUser} className="space-y-4">
                 {/* Name */}
                 <div>
-                  <label className="label text-gray-700 dark:text-gray-200">
-                    Name
-                  </label>
+                  <label className="label text-gray-700 ">Name</label>
                   <input
                     type="text"
                     name="name"
                     placeholder="Name"
                     required
-                    className="input w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                    className="input w-full border border-gray-300 "
                   />
                 </div>
 
                 {/* Photo URL */}
                 <div>
-                  <label className="label text-gray-700 dark:text-gray-200">
-                    Photo URL
-                  </label>
+                  <label className="label text-gray-700 ">Photo URL</label>
                   <input
                     type="text"
                     name="photo"
                     placeholder="https://i.ibb.co/3mMny9SF/hero.png"
                     required
-                    className="input w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                    className="input w-full border border-gray-300 "
                   />
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label className="label text-gray-700 dark:text-gray-200">
-                    Email
-                  </label>
+                  <label className="label text-gray-700 ">Email</label>
                   <input
                     type="email"
                     name="email"
                     placeholder="Email"
                     required
-                    className="input w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                    className="input w-full border border-gray-300 "
                   />
                 </div>
 
                 {/* Password */}
                 <div className="relative">
-                  <label className="label text-gray-700 dark:text-gray-200">
-                    Password
-                  </label>
+                  <label className="label text-gray-700 ">Password</label>
                   <input
                     type={show ? "text" : "password"}
                     name="password"
                     placeholder="******"
                     required
-                    className="input w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white pr-12"
+                    className="input w-full border border-gray-300 pr-12"
                   />
 
                   <button
                     type="button"
                     onClick={() => setShow(!show)}
-                    className="absolute top-8 right-3 text-gray-500 dark:text-gray-300"
+                    className="absolute z-10 top-8 right-3 text-gray-500 "
                   >
                     {show ? <BsEyeFill size={20} /> : <BsEyeSlash size={20} />}
                   </button>
@@ -168,7 +160,7 @@ const Register = () => {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="btn w-full mt-2 primary-btn text-white"
+                  className="btn w-full! mt-2 gradient text-white "
                   disabled={btnLoading}
                 >
                   {btnLoading ? (
@@ -180,9 +172,9 @@ const Register = () => {
               </form>
 
               {/* Login Link */}
-              <p className="mt-4 text-center text-gray-700 dark:text-gray-300">
+              <p className="mt-4 text-center text-gray-700 ">
                 Already have an account?{" "}
-                <Link href="/login" className="text-blue-500 font-semibold">
+                <Link href="/login" className="text-purple-500 font-semibold">
                   Login
                 </Link>
               </p>
@@ -190,7 +182,7 @@ const Register = () => {
               {/* Google Register */}
               <button
                 onClick={handleGoogleRegister}
-                className="btn w-full mt-4 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-black dark:text-white flex items-center justify-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                className="btn w-full mt-4 bg-white border border-gray-300 text-black flex items-center justify-center gap-2 hover:bg-gray-100 "
               >
                 <svg
                   aria-label="Google logo"
