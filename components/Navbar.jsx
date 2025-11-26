@@ -13,7 +13,7 @@ import { TbLogout2 } from "react-icons/tb";
 import { toast } from "react-toastify";
 
 export default function Navbar() {
-  const { user, loading, logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const handleLogOutBtn = async () => {
     try {
@@ -23,8 +23,6 @@ export default function Navbar() {
       toast.error("Logout failed");
     }
   };
-
-  if (loading) return <p>Loading...</p>;
 
   const links = (
     <>

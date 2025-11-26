@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FaStar } from "react-icons/fa";
 
 export default function ProductCard({ singleProduct }) {
@@ -11,6 +12,7 @@ export default function ProductCard({ singleProduct }) {
     description,
     image,
     discountPercent,
+    _id,
   } = singleProduct;
 
   // Discount price calculation
@@ -67,14 +69,17 @@ export default function ProductCard({ singleProduct }) {
             <span className="text-lg font-bold text-primary">Tk {price}</span>
           )}
         </div>
+        {/* Meta Info */}
+        <p className="text-xs text-gray-400">
+          {brand} • {category}
+        </p>
       </div>
-      {/* Meta Info */}
-      <p className="text-xs text-gray-400">
-        {brand} • {category}
-      </p>
-      <button className="mt-3 w-full btn btn-primary btn-sm flex items-center justify-center gap-2">
+      <Link
+        href={`/products/${_id}`}
+        className="mt-3 w-full btn btn-primary btn-sm flex items-center justify-center gap-2"
+      >
         View details
-      </button>
+      </Link>
     </div>
   );
 }
