@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import MyContainer from "./MyContainer";
 import Logo from "@/components/Logo";
 import MyLinks from "./MyLinks";
@@ -57,30 +57,47 @@ export default function Navbar() {
         {/* Auth Buttons */}
         <div className="flex items-center">
           {user ? (
-            <div className="flex items-center gap-2">
-              {/* Profile */}
-              <Link
-                href="/myProfile"
-                className="tooltip tooltip-bottom border-2 border-[#021247] rounded-full md:size-12 size-8"
-                data-tip={user.displayName}
-              >
-                <Image
-                  className="w-full h-full rounded-full object-cover"
-                  src={user.photoURL}
-                  alt={user.displayName}
-                  width={44}
-                  height={44}
-                />
-              </Link>
+            <>
+              {/* Profile Button */}
+              <div className="dropdown dropdown-bottom dropdown-end">
+                <div
+                  tabIndex={0}
+                  className="btn btn-ghost rounded-full w-12 h-12 p-0 border-2 border-[#021247] tooltip tooltip-bottom"
+                  data-tip={user.displayName}
+                >
+                  <Image
+                    src={user.photoURL}
+                    alt={user.displayName}
+                    width={48}
+                    height={48}
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                </div>
 
-              {/* Logout */}
-              <button
-                onClick={handleLogOutBtn}
-                className="btn text-white primary-btn btn-sm md:btn-md"
-              >
-                Log Out <TbLogout2 className="ml-1" />
-              </button>
-            </div>
+                {/* Dropdown Menu */}
+                <ul
+                  tabIndex={-1}
+                  className="menu dropdown-content bg-base-200 rounded-box z-50 mt-2 w-52 p-2 shadow-sm"
+                >
+                  <li>
+                    <Link href="/dashboard/add-product">Add Product</Link>
+                  </li>
+                  <li>
+                    <Link href="/dashboard/manage-products">
+                      Manage Products
+                    </Link>
+                  </li>
+                  <li>
+                    <button
+                      onClick={handleLogOutBtn}
+                      className="flex items-center gap-1 w-full"
+                    >
+                      Log Out <TbLogout2 />
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </>
           ) : (
             <div className="flex items-center gap-2">
               <Link
