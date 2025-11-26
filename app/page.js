@@ -1,6 +1,7 @@
 import HomeBanner from "@/components/HomeBanner";
 import LatestProduct from "@/components/LatestProduct";
 import PromoBanner from "@/components/PromoBanner";
+import ServiceSection from "@/components/service";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <HomeBanner></HomeBanner>
       <PromoBanner></PromoBanner>
       <LatestProduct></LatestProduct>
+      <ServiceSection></ServiceSection>
     </div>
   );
 }

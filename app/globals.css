@@ -3,6 +3,14 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+
+
+
+
+.title {
+  @apply md:text-4xl text-2xl text-center text-black font-semibold
+}
+
 .gradient {
   @apply bg-linear-to-r opacity-80 from-[#7500ac] to-[#e7d5eb] btn text-white text-base hover:scale-102 hover:transition-all hover:opacity-100
 }

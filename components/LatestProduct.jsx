@@ -10,7 +10,7 @@ export default async function LatestProduct() {
   return (
     <MyContainer>
       <div>
-        <h1>Latest Product</h1>
+        <h1 className="title my-5">Latest Product</h1>
       </div>
       <div className="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {products.map((singleProduct) => {
