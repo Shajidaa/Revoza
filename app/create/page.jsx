@@ -1,20 +1,13 @@
 "use client";
 
 import { useState, useContext } from "react";
-
-import {
-  FaArrowLeft,
-  FaImage,
-  FaTag,
-  FaDollarSign,
-  FaStar,
-} from "react-icons/fa";
-import { toast } from "react-toastify";
-import { AuthContext } from "@/context/AuthProvider";
-import Link from "next/link";
 import axios from "axios";
+import { AuthContext } from "@/context/AuthProvider";
+import { toast } from "react-toastify";
+import { Link } from "lucide-react";
+import { FaArrowLeft, FaDollarSign, FaImage } from "react-icons/fa";
 
-export default function AddProduct() {
+export default function CreateProduct() {
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
 
@@ -25,10 +18,15 @@ export default function AddProduct() {
     try {
       const form = new FormData(e.target);
       const product = Object.fromEntries(form.entries());
+
+      product.price = Number(product.price);
+      product.stock = Number(product.stock);
+      product.discountPercent = Number(product.discountPercent);
       product.bestSeller = product.bestSeller === "on";
       product.topRated = product.topRated === "on";
       product.sellerEmail = user?.email;
       product.createdAt = new Date();
+
       const { data } = await axios.post(
         "http://localhost:5000/products",
         product
@@ -41,7 +39,6 @@ export default function AddProduct() {
         toast.error("Failed to add product");
       }
     } catch (err) {
-      console.error(err);
       toast.error("Something went wrong!");
     } finally {
       setLoading(false);
@@ -170,7 +167,7 @@ export default function AddProduct() {
             <input
               type="text"
               name="sellerName"
-              value={user.displayName}
+              value={user?.displayName}
               readOnly
               className="input input-bordered w-full dark:bg-gray-700 dark:text-white"
             />
@@ -180,7 +177,7 @@ export default function AddProduct() {
             <input
               type="email"
               name="sellerEmail"
-              value={user.email}
+              value={user?.email}
               readOnly
               className="input input-bordered w-full dark:bg-gray-700 dark:text-white"
             />
@@ -192,7 +189,7 @@ export default function AddProduct() {
           <input
             type="text"
             name="sellerPhoto"
-            value={user.photoURL}
+            value={user?.photoURL}
             readOnly
             className="input input-bordered w-full dark:bg-gray-700 dark:text-white"
           />

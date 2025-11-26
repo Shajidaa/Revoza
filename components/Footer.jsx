@@ -1,10 +1,11 @@
 import React from "react";
 import Logo from "./Logo";
+import MyContainer from "./MyContainer";
 
 export default function Footer() {
   return (
     <footer className="w-full bg-[linear-gradient(to_left_bottom,#7500ac,#9536b5,#b05abf,#c87dca,#dda0d7,#d89ed2,#d39dcd,#ce9bc8,#b075b0,#905099,#6f2c83,#4b006f)] mt-10  py-10">
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-10">
+      <MyContainer className=" mx-auto  grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Logo & Contact */}
         <div className="space-y-4">
           <Logo></Logo>
@@ -119,7 +120,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-      </div>
+      </MyContainer>
     </footer>
   );
 }

@@ -11,19 +11,6 @@ export default function ManageProduct() {
   const axiosSecure = useAxiosSecure();
   const [products, setProducts] = useState([]);
   const { user } = useContext(AuthContext);
-  //   // Fetch products when component mounts
-  //   useEffect(() => {
-  //     const fetchProducts = async () => {
-  //       try {
-  //         const res = await axiosSecure.get("/add-product");
-  //         setProducts(res.data);
-  //       } catch (error) {
-  //         console.error(error);
-  //       }
-  //     };
-
-  //     fetchProducts();
-  //   }, []);
 
   useEffect(() => {
     if (user?.email) {
@@ -69,7 +56,7 @@ export default function ManageProduct() {
   };
 
   return (
-    <div className="p-4 max-w-7xl mx-auto">
+    <div className="p-4 max-w-7xl mx-auto min-h-dvh">
       <h1 className="text-3xl font-bold text-center my-5">My Products</h1>
 
       <table className="table w-full">
