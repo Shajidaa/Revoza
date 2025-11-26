@@ -11,13 +11,13 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-export default function BestSeller() {
+export default function Discount() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     async function loadProducts() {
       try {
-        const res = await fetch("http://localhost:5000/bestSeller-product", {
+        const res = await fetch("http://localhost:5000/discount-product", {
           cache: "no-store",
         });
         const data = await res.json();
@@ -29,10 +29,9 @@ export default function BestSeller() {
 
     loadProducts();
   }, []);
-
   return (
     <MyContainer>
-      <h1 className="title my-15">Best Seller</h1>
+      <h1 className="title my-15">Discount</h1>
 
       <Swiper
         pagination={{ clickable: true }}
