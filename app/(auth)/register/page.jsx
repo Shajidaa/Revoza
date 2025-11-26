@@ -21,6 +21,7 @@ const Register = () => {
     try {
       const res = await signInWithGoogle();
       setUser(res.user);
+      document.cookie = "userLoggedIn=true; path=/; samesite=lax;";
       toast.success("Google login successful!");
       router.push("/");
     } catch (err) {
@@ -70,7 +71,7 @@ const Register = () => {
         displayName,
         photoURL,
       });
-
+      document.cookie = "userLoggedIn=true; path=/; samesite=lax;";
       toast.success("Account created successfully!");
       router.push("/");
     } catch (err) {

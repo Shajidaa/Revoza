@@ -19,6 +19,7 @@ const Login = () => {
     try {
       const res = await signInWithGoogle();
       setUser(res.user);
+      document.cookie = "userLoggedIn=true; path=/; samesite=lax;";
       toast.success("Google login successful!");
       router.push("/"); // redirect
     } catch (err) {
@@ -48,6 +49,7 @@ const Login = () => {
     try {
       const res = await logInFunc(email, password);
       setUser(res.user);
+      document.cookie = "userLoggedIn=true; path=/; samesite=lax;";
       toast.success("Logged in successfully!");
       router.push("/"); // redirect
     } catch (err) {
