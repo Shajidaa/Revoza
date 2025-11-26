@@ -76,7 +76,7 @@ export default function ProductCard({ singleProduct }) {
       </div>
       <Link
         href={`/products/${_id}`}
-        className="mt-3 w-full btn btn-primary btn-sm flex items-center justify-center gap-2"
+        className="mt-3 w-full gradient btn-sm flex items-center justify-center gap-2"
       >
         View details
       </Link>

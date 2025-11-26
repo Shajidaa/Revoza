@@ -42,7 +42,7 @@ export default function Navbar() {
   );
 
   return (
-    <div className="navbar bg-[#ddf5fc]  lg:sticky z-1000 top-0 shadow-sm">
+    <div className="navbar bg-[#E9D5EB]  lg:sticky z-1000 top-0 shadow-sm">
       <MyContainer className="flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="text-2xl font-semibold text-gray-500 ">
@@ -83,9 +83,7 @@ export default function Navbar() {
                     <Link href="/dashboard/addProduct">Add Product</Link>
                   </li>
                   <li>
-                    <Link href="/dashboard/manageProducts">
-                      Manage Products
-                    </Link>
+                    <Link href="/dashboard/manageProduct">Manage Products</Link>
                   </li>
                   <li>
                     <button

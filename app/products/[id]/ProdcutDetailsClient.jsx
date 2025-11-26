@@ -120,11 +120,6 @@ export default function ProductDetailsClient({ product }) {
         )}
       </div>
 
-      {/* Created At */}
-      <p className="text-gray-500 mt-4 text-sm">
-        Added on: {new Date(product.createdAt).toLocaleDateString()}
-      </p>
-
       {/* Add to Cart Button */}
       <button
         onClick={handleBillSubmit}

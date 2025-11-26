@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import AuthProvider from "@/context/AuthProvider";
 import { ToastContainer } from "react-toastify";
+
 // import AuthProvider from "@/context/AuthProvider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,9 +29,9 @@ export default function RootLayout({ children }) {
           suppressHydrationWarning
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
+          {" "}
           {/* navbar */}
           <Navbar></Navbar>
-
           {children}
           <ToastContainer autoClose={700}></ToastContainer>
         </body>

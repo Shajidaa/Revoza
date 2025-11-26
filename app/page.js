@@ -1,10 +1,12 @@
 import HomeBanner from "@/components/HomeBanner";
 import LatestProduct from "@/components/LatestProduct";
+import PromoBanner from "@/components/PromoBanner";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div className="">
       <HomeBanner></HomeBanner>
+      <PromoBanner></PromoBanner>
       <LatestProduct></LatestProduct>
     </div>
   );
