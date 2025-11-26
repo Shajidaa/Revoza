@@ -17,5 +17,5 @@ export function middleware(req) {
 }
 
 export const config = {
-  matcher: ["/create/:path*", "/dashboard/:path*", "/profile/:path*"],
+  matcher: ["/create/:path*", "/manageProduct/:path*", "/profile/:path*"],
 };

@@ -1,29 +1,23 @@
 import MyContainer from "@/components/MyContainer";
-import ProductCard from "@/components/ProductCard";
-import React from "react";
+import ProductFilter from "@/components/ProductFilter";
 
 export default async function Products() {
-  const productData = await fetch(`http://localhost:5000/products`, {
+  const res = await fetch("http://localhost:5000/products", {
     cache: "no-store",
   });
-  const products = await productData.json();
-  // console.log(products);
+  const allProducts = await res.json();
 
   return (
     <MyContainer>
-      <div>
-        <h1 className="title py-10">All Product</h1>
+      <div className="py-10">
+        <h1 className="title">All Product</h1>
+        <h2 className="text-center font-semibold">
+          Discover our full range of products, carefully selected to meet your
+          needs.
+        </h2>
       </div>
-      <div className="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {products.map((singleProduct) => {
-          return (
-            <ProductCard
-              key={singleProduct._id}
-              singleProduct={singleProduct}
-            ></ProductCard>
-          );
-        })}
-      </div>
+
+      <ProductFilter allProducts={allProducts} />
     </MyContainer>
   );
 }
