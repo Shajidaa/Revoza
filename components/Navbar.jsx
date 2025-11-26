@@ -36,7 +36,7 @@ export default function Navbar() {
         <MyLinks href="/about">About</MyLinks>
       </li>
       <li>
-        <MyLinks href="/Dashboard">Dashboard</MyLinks>
+        <MyLinks href="/dashboard">Dashboard</MyLinks>
       </li>
     </>
   );

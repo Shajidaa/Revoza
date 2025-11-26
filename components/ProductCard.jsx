@@ -51,7 +51,7 @@ export default function ProductCard({ singleProduct }) {
 
           {/* Price & Rating */}
           <div className="flex items-center gap-1 text-yellow-500 font-semibold">
-            <FaStar /> {rating.toFixed(1)}
+            <FaStar /> {rating}
           </div>
         </div>
         {/* Price */}
