@@ -1,16 +1,33 @@
 "use client";
 
-import React from "react";
+import React, { useContext } from "react";
 import MyContainer from "./MyContainer";
 import Logo from "@/components/Logo";
 import MyLinks from "./MyLinks";
-import Mybutton from "./Mybutton";
+
+import { AuthContext } from "@/context/AuthProvider";
+import Link from "next/link";
+import Image from "next/image";
+import { BiLogIn } from "react-icons/bi";
+import { TbLogout2 } from "react-icons/tb";
+import { toast } from "react-toastify";
 
 export default function Navbar() {
-  // const { data } = useSession();
+  const { user, loading, logOut } = useContext(AuthContext);
+
+  const handleLogOutBtn = async () => {
+    try {
+      await logOut();
+      toast.success("Successfully Logout");
+    } catch (err) {
+      toast.error("Logout failed");
+    }
+  };
+
+  if (loading) return <p>Loading...</p>;
+
   const links = (
     <>
-      {" "}
       <li>
         <MyLinks href="/">Home</MyLinks>
       </li>
@@ -25,54 +42,71 @@ export default function Navbar() {
       </li>
     </>
   );
+
   return (
-    <div className=" bg-base-100 shadow-sm">
-      <MyContainer className="navbar">
-        <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+    <div className="navbar bg-[#ddf5fc]  lg:sticky z-1000 top-0 shadow-sm">
+      <MyContainer className="flex justify-between items-center">
+        {/* Logo */}
+        <Link href="/" className="text-2xl font-semibold text-gray-500 ">
+          <Logo />
+        </Link>
+
+        {/* Desktop Menu */}
+        <div className="hidden md:flex">
+          <ul className="flex gap-6">{links}</ul>
+        </div>
+
+        {/* Auth Buttons */}
+        <div className="flex items-center">
+          {user ? (
+            <div className="flex items-center gap-2">
+              {/* Profile */}
+              <Link
+                href="/myProfile"
+                className="tooltip tooltip-bottom border-2 border-[#021247] rounded-full md:size-12 size-8"
+                data-tip={user.displayName}
               >
-                {" "}
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
-              </svg>
+                <Image
+                  className="w-full h-full rounded-full object-cover"
+                  src={user.photoURL}
+                  alt={user.displayName}
+                  width={44}
+                  height={44}
+                />
+              </Link>
+
+              {/* Logout */}
+              <button
+                onClick={handleLogOutBtn}
+                className="btn text-white primary-btn btn-sm md:btn-md"
+              >
+                Log Out <TbLogout2 className="ml-1" />
+              </button>
             </div>
-            <ul
-              tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-            >
-              {links}
-            </ul>
-          </div>
-          <Logo></Logo>
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
-        </div>
-        <div className="navbar-end gap-2">
-          <Mybutton href={"/login"}>Login</Mybutton>
-          {/* {data?.user ? (
-            <button onClick={() => signOut({ callbackUrl: "/login" })}>
-              Logout
-            </button>
           ) : (
-            <>
-              <Link href="/login">Login</Link> |{" "}
-              <Link href="/register">Register</Link>
-            </>
-          )} */}
+            <div className="flex items-center gap-2">
+              <Link
+                href="/login"
+                className="btn primary-btn btn-sm md:btn-md flex items-center"
+              >
+                <BiLogIn /> Login
+              </Link>
+
+              <Link
+                href="/register"
+                className="btn primary-btn btn-sm md:btn-md"
+              >
+                Register
+              </Link>
+            </div>
+          )}
         </div>
       </MyContainer>
+
+      {/* Bottom Navigation (Mobile Only) */}
+      <div className="shadow-sm bg-base-100/30 backdrop-blur-md md:hidden fixed bottom-0 left-0 w-full z-50">
+        <ul className="flex justify-center gap-6 py-2">{links}</ul>
+      </div>
     </div>
   );
 }

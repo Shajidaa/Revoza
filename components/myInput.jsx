@@ -18,7 +18,7 @@ export default function MyInput({
         id={name}
         placeholder={placeholder}
         {...register(name, { required })}
-        className="w-full px-4 py-3 rounded-md border dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
+        className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
       />
     </div>
   );
