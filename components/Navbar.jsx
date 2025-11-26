@@ -80,10 +80,10 @@ export default function Navbar() {
                   className="menu dropdown-content bg-base-200 rounded-box z-50 mt-2 w-52 p-2 shadow-sm"
                 >
                   <li>
-                    <Link href="/dashboard/add-product">Add Product</Link>
+                    <Link href="/dashboard/addProduct">Add Product</Link>
                   </li>
                   <li>
-                    <Link href="/dashboard/manage-products">
+                    <Link href="/dashboard/manageProducts">
                       Manage Products
                     </Link>
                   </li>
