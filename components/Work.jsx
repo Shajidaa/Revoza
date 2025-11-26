@@ -37,7 +37,7 @@ export default function Work() {
         HOW WE WORK
       </h1>
       <p className="text-center text-gray-600 max-w-2xl mx-auto mb-16">
-        At e-mart, we make shopping for your favorite beauty products easy and
+        At ReVoza, we make shopping for your favorite beauty products easy and
         convenient.
       </p>
 

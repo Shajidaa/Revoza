@@ -35,9 +35,6 @@ export default function Navbar() {
       <li>
         <MyLinks href="/about">About</MyLinks>
       </li>
-      <li>
-        <MyLinks href="/dashboard">Dashboard</MyLinks>
-      </li>
     </>
   );
 
@@ -114,12 +111,11 @@ export default function Navbar() {
             </div>
           )}
         </div>
+        {/* Bottom Navigation (Mobile Only) */}
+        <div className="shadow-sm bg-base-100/30 backdrop-blur-md md:hidden fixed bottom-0 left-0 w-full z-50">
+          <ul className="flex justify-center gap-6 py-2">{links}</ul>
+        </div>
       </MyContainer>
-
-      {/* Bottom Navigation (Mobile Only) */}
-      <div className="shadow-sm bg-base-100/30 backdrop-blur-md md:hidden fixed bottom-0 left-0 w-full z-50">
-        <ul className="flex justify-center gap-6 py-2">{links}</ul>
-      </div>
     </div>
   );
 }

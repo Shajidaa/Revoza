@@ -10,7 +10,6 @@ import Work from "@/components/Work";
 export default function Home() {
   return (
     <div className="">
-      <PromoBanner></PromoBanner>
       <Discount></Discount>
       <LatestProduct></LatestProduct>
       <ServiceSection></ServiceSection>
