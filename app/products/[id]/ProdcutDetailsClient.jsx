@@ -1,57 +1,94 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import useAxiosSecure from "@/Hooks/useAxiosSecure";
 import { AuthContext } from "@/context/AuthProvider";
+import { toast } from "react-toastify";
+import { FaShoppingCart, FaStar, FaStore, FaTag } from "react-icons/fa";
 
 export default function ProductDetailsClient({ product }) {
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(null);
-
   const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
 
-  const handleBillSubmit = async (e) => {
-    e.preventDefault();
+  const [loading, setLoading] = useState(false);
+  const [alreadyAdded, setAlreadyAdded] = useState(false);
+  const [relatedProducts, setRelatedProducts] = useState([]);
+
+  const isSeller = user?.email === product?.sellerEmail;
+
+  useEffect(() => {
+    async function checkAdded() {
+      if (!user) return;
+      try {
+        const res = await axiosSecure.get(`/add-product?email=${user.email}`);
+        const exists = res.data.some((p) => p._id === product._id);
+        if (exists) setAlreadyAdded(true);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    checkAdded();
+  }, [user, product, axiosSecure]);
+
+  useEffect(() => {
+    async function loadRelated() {
+      try {
+        const res = await axiosSecure.get(`/products`);
+        const filtered = res.data
+          .filter(
+            (p) => p.category === product.category && p._id !== product._id
+          )
+          .slice(0, 4);
+        setRelatedProducts(filtered);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    loadRelated();
+  }, [product, axiosSecure]);
+
+  const handleAdd = async () => {
     if (!user) {
-      alert("Please login to add product to cart");
+      toast("Please login to add product");
       return;
     }
-
     setLoading(true);
     try {
-      const response = await axiosSecure.post("/add-product", {
+      const res = await axiosSecure.post("/add-product", {
         ...product,
         userEmail: user.email,
       });
-      setSuccess("Product added to your cart!");
-      console.log("Added to cart:", response.data);
-    } catch (error) {
-      console.error(error);
-      setSuccess("Failed to add product.");
+      toast.success("Added to cart!");
+      setAlreadyAdded(true);
+    } catch (e) {
+      console.error(e);
+      toast.error("Failed to add.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      {/* Product Image */}
-      <Image
-        src={product.image}
-        alt={product.title}
-        width={100}
-        height={96}
-        className="w-full h-96 object-contain mb-6 rounded-lg shadow"
-      />
+    <div className="max-w-5xl mx-auto p-8 bg-white shadow-xl rounded-xl border border-purple-200">
+      <div className="w-full flex justify-center mb-8">
+        <Image
+          src={product.image}
+          alt={product.title}
+          width={350}
+          height={350}
+          className="object-contain rounded-lg shadow-lg"
+        />
+      </div>
 
-      {/* Title & Description */}
-      <h1 className="text-3xl font-bold mb-2">{product.title}</h1>
-      <p className="text-gray-700 mb-4">{product.description}</p>
+      <h1 className="text-4xl font-bold text-purple-700 mb-3">
+        {product.title}
+      </h1>
+      <p className="text-gray-700 text-lg mb-6 leading-relaxed">
+        {product.description}
+      </p>
 
-      {/* Product Info */}
-      <div className="grid grid-cols-2 gap-4 mb-4">
+      <div className="grid grid-cols-2 gap-6 bg-purple-50 p-6 rounded-lg border border-purple-200 mb-6">
         <p>
           <strong>Category:</strong> {product.category}
         </p>
@@ -61,8 +98,8 @@ export default function ProductDetailsClient({ product }) {
         <p>
           <strong>Price:</strong> ${product.price}
         </p>
-        <p>
-          <strong>Rating:</strong> {product.rating}
+        <p className="flex items-center gap-2">
+          <FaStar className="text-yellow-400" /> {product.rating}
         </p>
         <p>
           <strong>Stock:</strong> {product.stock}
@@ -82,54 +119,79 @@ export default function ProductDetailsClient({ product }) {
         <p>
           <strong>Return Policy:</strong> {product.returnPolicy}
         </p>
-        <p>
-          <strong>Discount:</strong> {product.discountPercent}%
+        <p className="flex items-center gap-2">
+          <FaTag className="text-purple-500" /> {product.discountPercent}% Off
         </p>
       </div>
 
-      {/* Seller Info */}
-      <div className="flex items-center gap-4 mb-6">
+      <div className="flex items-center gap-4 bg-purple-100 p-4 rounded-lg border border-purple-200 mb-6">
         <Image
           src={product.sellerPhoto}
           alt={product.sellerName}
-          width={12}
-          height={12}
-          className="w-12 h-12 rounded-full"
+          width={50}
+          height={50}
+          className="rounded-full border-2 border-purple-400"
         />
         <div>
-          <p>
-            <strong>Seller:</strong> {product.sellerName}
+          <p className="flex items-center gap-2 font-medium">
+            <FaStore className="text-purple-600" /> {product.sellerName}
           </p>
-          <p>
-            <strong>Email:</strong> {product.sellerEmail}
-          </p>
+          <p className="text-gray-600">{product.sellerEmail}</p>
         </div>
       </div>
 
-      {/* Badges */}
-      <div className="flex gap-2 mb-6">
+      <div className="flex gap-3 mb-6">
         {product.bestSeller && (
-          <span className="bg-yellow-200 text-yellow-800 px-3 py-1 rounded-full text-sm">
+          <span className="bg-yellow-300 text-yellow-900 px-4 py-1 rounded-full text-sm font-medium">
             Best Seller
           </span>
         )}
         {product.topRated && (
-          <span className="bg-green-200 text-green-800 px-3 py-1 rounded-full text-sm">
+          <span className="bg-green-300 text-green-900 px-4 py-1 rounded-full text-sm font-medium">
             Top Rated
           </span>
         )}
       </div>
 
-      {/* Add to Cart Button */}
-      <button
-        onClick={handleBillSubmit}
-        disabled={loading}
-        className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
-      >
-        {loading ? "Adding..." : "Add to Cart"}
-      </button>
+      {!isSeller && (
+        <button
+          onClick={handleAdd}
+          disabled={loading || alreadyAdded}
+          className="bg-purple-600 text-white px-8 py-3 rounded-lg text-lg font-semibold flex items-center gap-2 hover:bg-purple-700 transition disabled:opacity-50"
+        >
+          <FaShoppingCart />
+          {alreadyAdded
+            ? "Already Added"
+            : loading
+            ? "Adding..."
+            : "Add to Cart"}
+        </button>
+      )}
 
-      {success && <p className="mt-3 text-green-600">{success}</p>}
+      {/* RELATED PRODUCTS */}
+      <h2 className="text-2xl font-bold mt-10 mb-4 text-purple-700">
+        Related Products
+      </h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        {relatedProducts.map((rp) => (
+          <div
+            key={rp._id}
+            className="p-4 shadow-lg rounded-lg border hover:shadow-xl transition bg-white"
+          >
+            <Image
+              src={rp.image}
+              alt={rp.title}
+              width={200}
+              height={200}
+              className="rounded-md mx-auto"
+            />
+            <h3 className="mt-3 font-semibold text-lg text-center">
+              {rp.title}
+            </h3>
+            <p className="text-center text-purple-600 font-bold">${rp.price}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
