@@ -9,9 +9,10 @@ export default function Error({ error, reset }) {
   }, [error]);
 
   return (
-    <div>
+    <div className="flex justify-center items-center min-h-dvh">
       <h2>Something went wrong!</h2>
       <button
+        className="btn gradientBtn"
         onClick={
           // Attempt to recover by trying to re-render the segment
           () => reset()

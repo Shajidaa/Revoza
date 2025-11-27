@@ -178,19 +178,30 @@ export default function ProductDetailsClient({ product }) {
         {relatedProducts.map((rp) => (
           <div
             key={rp._id}
-            className="p-4 shadow-lg rounded-lg   hover:shadow-xl transition bg-white"
+            className="p-4 shadow-lg rounded-lg hover:shadow-xl transition bg-white"
           >
-            <Image
-              src={rp.image}
-              alt={rp.title}
-              width={200}
-              height={200}
-              className="rounded-md mx-auto"
-            />
-            <h3 className="mt-3 font-semibold text-lg text-center">
-              {rp.title}
-            </h3>
-            <p className="text-center text-purple-600 font-bold">${rp.price}</p>
+            <div
+              className=" rounded-md
+             overflow-hidden aspect-square flex items-center justify-center"
+            >
+              {" "}
+              {/* Square aspect ratio */}
+              <Image
+                src={rp.image}
+                alt={rp.title}
+                width={200}
+                height={200}
+                className="w-full h-full object-contain p-2"
+              />
+            </div>
+            <div>
+              <h3 className="mt-3 font-semibold text-lg text-center">
+                {rp.title}
+              </h3>
+              <p className="text-center text-purple-600 font-bold">
+                ${rp.price}
+              </p>
+            </div>
           </div>
         ))}
       </div>

@@ -13,9 +13,6 @@ export default function AuthSocial() {
 
   const { handleSubmit } = useForm();
 
-  //-----------------------------------------
-  // CREATE FUNCTION inside this page
-  //-----------------------------------------
   const signInWithGoogle = async () => {
     try {
       const provider = new GoogleAuthProvider();

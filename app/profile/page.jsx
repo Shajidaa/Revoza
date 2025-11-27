@@ -38,7 +38,20 @@ export default function ProfilePage() {
       <div className="max-w-5xl mx-auto bg-white p-10 rounded-3xl shadow-lg">
         {/* User Info */}
         <div className="flex items-center gap-6 border-b pb-6 mb-8">
-          <FaUserCircle className="text-7xl text-purple-600" />
+          <div
+            tabIndex={0}
+            className="btn btn-ghost rounded-full w-12
+             h-12 p-0 border-2 border-[#580269] tooltip tooltip-bottom"
+            data-tip={user.displayName}
+          >
+            <Image
+              src={user.photoURL}
+              alt={user.displayName}
+              width={48}
+              height={48}
+              className="w-full h-full object-cover rounded-full"
+            />
+          </div>
           <div>
             <h1 className="text-3xl font-bold text-gray-800">
               {user?.displayName}

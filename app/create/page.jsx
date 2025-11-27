@@ -26,6 +26,11 @@ export default function CreateProduct() {
       product.topRated = product.topRated === "on";
       product.sellerEmail = user?.email;
       product.createdAt = new Date();
+      product.dimensions = {
+        width: Number(product.width),
+        height: Number(product.height),
+        depth: Number(product.depth),
+      };
 
       const { data } = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/products`,
@@ -81,11 +86,12 @@ export default function CreateProduct() {
               <option disabled value="">
                 Select Category
               </option>
-              <option>Electronics</option>
-              <option>Mobile</option>
-              <option>Fashion</option>
-              <option>Laptop</option>
-              <option>Other</option>
+
+              <option value="electronics">Electronics</option>
+              <option value="mobile">Mobile</option>
+              <option value="fashion">Fashion</option>
+              <option value="laptop">Laptop</option>
+              <option value="Other">Other</option>
             </select>
           </div>
         </div>
@@ -122,8 +128,52 @@ export default function CreateProduct() {
               />
             </div>
           </div>
+          <div>
+            <label className="label font-medium text-purple-700">Weight</label>
+            <input
+              type="number"
+              name="weight"
+              placeholder="e.g. 100"
+              required
+              className="input input-bordered w-full"
+            />
+          </div>
         </div>
-
+        {/* Dimensions */}
+        <div>
+          <label className="label font-medium text-purple-700">
+            Dimensions (mm)
+          </label>
+          <div className="grid md:grid-cols-3 gap-4">
+            <div>
+              <input
+                type="number"
+                name="width"
+                placeholder="Width"
+                required
+                className="input input-bordered w-full"
+              />
+            </div>
+            <div>
+              <input
+                type="number"
+                name="height"
+                placeholder="Height"
+                required
+                className="input input-bordered w-full"
+              />
+            </div>
+            <div>
+              <input
+                type="number"
+                name="depth"
+                placeholder="Depth"
+                required
+                className="input input-bordered w-full"
+              />
+            </div>
+          </div>
+        </div>
         {/* Stock + Brand */}
         <div className="grid md:grid-cols-2 gap-4">
           <div>
