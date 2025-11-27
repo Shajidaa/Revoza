@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 🛒 Revoza
 
-## Getting Started
+## Description:
 
-First, run the development server:
+Revoza is a modern, responsive, and user-friendly e-commerce platform designed to deliver a smooth and interactive shopping experience. It allows users to browse products, manage carts, and securely purchase items with a clean and optimized UI.
 
-```bash
+**Revoza**
+
+## 🚀 Features
+
+Fully responsive design for mobile, tablet, and desktop devices.
+
+Browse, filter, and view product details easily.
+
+Dynamic UI built with Next.js, React, and Framer Motion.
+
+Secure authentication via NextAuth (MongoDB Adapter).
+
+Add to cart, wishlist, checkout, and order management.
+
+Interactive elements like toast notifications, animations, and spinners.
+
+Fast and optimized performance using React Query & SWR.
+
+Beautiful styling with Tailwind CSS + DaisyUI.
+
+## Technologies used :
+
+-**/Client**: HTML5, Next.js, React, Tailwind CSS
+**Libraries & Packages:**
+
+Swiper
+
+lucide-react
+
+axios
+
+react-hook-form
+
+react-icons
+
+react-spinners
+
+react-toastify
+
+sweetalert2
+
+framer-motion
+
+react-query
+
+-**Server** Next.js API Routes, MongoDB, NextAuth, bcrypt
+
+## 📦 Environment Variables
+
+To run this project, you will need to add the following variables to your .env.local file:
+
+MONGODB_URI
+NEXTAUTH_URL
+NEXTAUTH_SECRET
+
+## 🖥️ Run Locally
+
+---
+
+## Clone the project
+
+git clone https://github.com/yourusername/revoza.git
+
+# Go to the project directory
+
+cd revoza
+
+# Install dependencies
+
+npm install
+
+# Start the server
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+💬 Feedback
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If you have any feedback, please reach out at: shajidaislam34@gmail.com
