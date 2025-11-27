@@ -34,6 +34,7 @@ export default function Discount() {
       <h1 className="title my-15">Discount</h1>
 
       <Swiper
+        loop={true}
         pagination={{ clickable: true }}
         breakpoints={{
           640: {

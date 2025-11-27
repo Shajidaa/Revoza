@@ -35,6 +35,7 @@ export default function BestSeller() {
       <h1 className="title my-15">Best Seller</h1>
 
       <Swiper
+        loop={true}
         pagination={{ clickable: true }}
         breakpoints={{
           640: {
@@ -42,12 +43,12 @@ export default function BestSeller() {
             spaceBetween: 20,
           },
           768: {
-            slidesPerView: 4,
-            spaceBetween: 40,
+            slidesPerView: 3,
+            spaceBetween: 10,
           },
           1024: {
-            slidesPerView: 5,
-            spaceBetween: 50,
+            slidesPerView: 3,
+            spaceBetween: 10,
           },
         }}
         modules={[Pagination]}

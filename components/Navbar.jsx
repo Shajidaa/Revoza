@@ -86,6 +86,9 @@ export default function Navbar() {
                     <Link href="/manageProduct">Manage Products</Link>
                   </li>
                   <li>
+                    <Link href="/profile">Profile</Link>
+                  </li>
+                  <li>
                     <button
                       onClick={handleLogOutBtn}
                       className="flex items-center gap-1 w-full"

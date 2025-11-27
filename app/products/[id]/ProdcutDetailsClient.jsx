@@ -81,13 +81,24 @@ export default function ProductDetailsClient({ product }) {
         />
       </div>
 
-      <h1 className="text-4xl font-bold text-purple-700 mb-3">
+      <h1 className="text-2xl md:text-4xl font-bold text-purple-700 mb-3">
         {product.title}
       </h1>
-      <p className="text-gray-700 text-lg mb-6 leading-relaxed">
+      <p className="text-gray-700 text-sm md:text-lg mb-6 leading-relaxed">
         {product.description}
       </p>
-
+      <div className="flex gap-3 mb-6">
+        {product.bestSeller && (
+          <span className="bg-yellow-300 text-yellow-900 px-4 py-1 rounded-full text-sm font-medium">
+            Best Seller
+          </span>
+        )}
+        {product.topRated && (
+          <span className="bg-green-300 text-green-900 px-4 py-1 rounded-full text-sm font-medium">
+            Top Rated
+          </span>
+        )}
+      </div>
       <div className="grid grid-cols-2 gap-6 bg-purple-50 p-6 rounded-lg border border-purple-200 mb-6">
         <p>
           <strong>Category:</strong> {product.category}
@@ -139,34 +150,22 @@ export default function ProductDetailsClient({ product }) {
           <p className="text-gray-600">{product.sellerEmail}</p>
         </div>
       </div>
-
-      <div className="flex gap-3 mb-6">
-        {product.bestSeller && (
-          <span className="bg-yellow-300 text-yellow-900 px-4 py-1 rounded-full text-sm font-medium">
-            Best Seller
-          </span>
-        )}
-        {product.topRated && (
-          <span className="bg-green-300 text-green-900 px-4 py-1 rounded-full text-sm font-medium">
-            Top Rated
-          </span>
+      <div className="flex justify-center items-center">
+        {!isSeller && (
+          <button
+            onClick={handleAdd}
+            disabled={loading || alreadyAdded}
+            className="bg-purple-600 text-white  px-8 py-3 rounded-lg text-lg font-semibold flex items-center gap-2 hover:bg-purple-700 transition disabled:opacity-50"
+          >
+            <FaShoppingCart />
+            {alreadyAdded
+              ? "Already Added"
+              : loading
+              ? "Adding..."
+              : "Add to Cart"}
+          </button>
         )}
       </div>
-
-      {!isSeller && (
-        <button
-          onClick={handleAdd}
-          disabled={loading || alreadyAdded}
-          className="bg-purple-600 text-white px-8 py-3 rounded-lg text-lg font-semibold flex items-center gap-2 hover:bg-purple-700 transition disabled:opacity-50"
-        >
-          <FaShoppingCart />
-          {alreadyAdded
-            ? "Already Added"
-            : loading
-            ? "Adding..."
-            : "Add to Cart"}
-        </button>
-      )}
 
       {/* RELATED PRODUCTS */}
       <h2 className="text-2xl font-bold mt-10 mb-4 text-purple-700">
@@ -176,7 +175,7 @@ export default function ProductDetailsClient({ product }) {
         {relatedProducts.map((rp) => (
           <div
             key={rp._id}
-            className="p-4 shadow-lg rounded-lg border hover:shadow-xl transition bg-white"
+            className="p-4 shadow-lg rounded-lg   hover:shadow-xl transition bg-white"
           >
             <Image
               src={rp.image}
