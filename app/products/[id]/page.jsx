@@ -1,7 +1,7 @@
 // app/products/[id]/page.jsx
 // import ProductDetailsClient from "./ProductDetailsClient";
 
-import ProductDetailsClient from "./ProductDetailsClient";
+import ProductDetailsClient from "@/ProductDetailsClient";
 
 // import ProductDetailsClient from "./ProductDetailsClient";
 

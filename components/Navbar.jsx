@@ -11,7 +11,7 @@ import Image from "next/image";
 import { BiLogIn } from "react-icons/bi";
 import { TbLogout2 } from "react-icons/tb";
 import { toast } from "react-toastify";
-import LogoutButton from "./Logout";
+import LogoutButton from "@/components/Logout";
 
 export default function Navbar() {
   const { user } = useContext(AuthContext);
