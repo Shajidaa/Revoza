@@ -6,7 +6,7 @@ import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "@/context/AuthProvider";
 import { toast } from "react-toastify";
 import { FaShoppingCart, FaStar, FaStore, FaTag } from "react-icons/fa";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
 
 export default function ProductDetailsClient({ product }) {
   const axiosSecure = useAxiosSecure();
