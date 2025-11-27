@@ -1,9 +1,9 @@
 // app/products/[id]/page.jsx
 // import ProductDetailsClient from "./ProductDetailsClient";
 
-import ProductDetailsClient from "@/ProductDetailsClient";
+// import ProductDetailsClient from "@/ProductDetailsClient";
 
-// import ProductDetailsClient from "./ProductDetailsClient";
+import ProductDetailsClient from "./ProductDetailsClient";
 
 export default async function ProductDetails({ params }) {
   const { id } = await params;
