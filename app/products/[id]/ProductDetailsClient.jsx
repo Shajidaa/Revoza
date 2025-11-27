@@ -7,6 +7,7 @@ import { AuthContext } from "@/context/AuthProvider";
 import { toast } from "react-toastify";
 import { FaShoppingCart, FaStar, FaStore, FaTag } from "react-icons/fa";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
+import Link from "next/link";
 
 export default function ProductDetailsClient({ product }) {
   const axiosSecure = useAxiosSecure();
@@ -72,6 +73,7 @@ export default function ProductDetailsClient({ product }) {
 
   return (
     <div className="max-w-5xl mx-auto p-8 bg-white shadow-xl rounded-xl border border-purple-200">
+      <Link href={"/products"}>⬅ Back</Link>
       <div className="w-full flex justify-center mb-8">
         <Image
           src={product.image}

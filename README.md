@@ -65,7 +65,9 @@ NEXTAUTH_SECRET
 
 ## Clone the project
 
-git clone https://github.com/yourusername/revoza.git
+git clone client : https://github.com/Shajidaa/Revoza
+
+git clone server :https://github.com/Shajidaa/Revozas-server
 
 # Go to the project directory
 
