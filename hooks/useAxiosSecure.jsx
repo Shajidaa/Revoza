@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
 });
 
 const useAxiosSecure = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logoutUser } = useContext(AuthContext);
 
   useEffect(() => {
     if (!user?.accessToken) return;
@@ -28,7 +28,7 @@ const useAxiosSecure = () => {
         const status = error.response?.status;
 
         if (status === 401 || status === 403) {
-          await logOut();
+          await logoutUser();
         }
         return Promise.reject(error);
       }
@@ -38,7 +38,7 @@ const useAxiosSecure = () => {
       axiosInstance.interceptors.request.eject(requestInterceptor);
       axiosInstance.interceptors.response.eject(responseInterceptor);
     };
-  }, [user, logOut]);
+  }, [user, logoutUser]);
 
   return axiosInstance;
 };

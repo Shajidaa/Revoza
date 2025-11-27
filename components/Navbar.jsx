@@ -11,18 +11,19 @@ import Image from "next/image";
 import { BiLogIn } from "react-icons/bi";
 import { TbLogout2 } from "react-icons/tb";
 import { toast } from "react-toastify";
+import LogoutButton from "./Logout";
 
 export default function Navbar() {
-  const { user, logOut } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
-  const handleLogOutBtn = async () => {
-    try {
-      await logOut();
-      toast.success("Successfully Logout");
-    } catch (err) {
-      toast.error("Logout failed");
-    }
-  };
+  // const handleLogOutBtn = async () => {
+  //   try {
+  //     await logoutUser();
+  //     toast.success("Successfully Logout");
+  //   } catch (err) {
+  //     toast.error("Logout failed");
+  //   }
+  // };
 
   const links = (
     <>
@@ -89,12 +90,13 @@ export default function Navbar() {
                     <Link href="/profile">Profile</Link>
                   </li>
                   <li>
-                    <button
+                    {/* <button
                       onClick={handleLogOutBtn}
                       className="flex items-center gap-1 w-full"
                     >
                       Log Out <TbLogout2 />
-                    </button>
+                    </button> */}
+                    <LogoutButton></LogoutButton>
                   </li>
                 </ul>
               </div>

@@ -36,20 +36,57 @@ const AuthProvider = ({ children }) => {
   const logInFunc = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
-  //sign out
-  const logOut = () => {
+  // //sign out
+  // const logOut = () => {
+  //   setLoading(true);
+  //   return signOut(auth);
+  // };
+  // Logout User - FIXED VERSION
+  const logoutUser = async () => {
     setLoading(true);
-    return signOut(auth);
+    try {
+      // Clear user state first
+      setUser(null);
+
+      // Sign out from Firebase
+      await signOut(auth);
+
+      console.log("Firebase signout successful");
+    } catch (error) {
+      console.error("Firebase signout error:", error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
   };
 
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (currUser) => {
+  //     setUser(currUser);
+  //     setLoading(false);
+  //   });
+  //   return () => {
+  //     unsubscribe();
+  //   };
+  // }, []);
+  // Auth State Observer
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currUser) => {
-      setUser(currUser);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log("Auth state changed:", currentUser);
+      setUser(currentUser);
       setLoading(false);
+
+      // Set cookie based on auth state
+      if (currentUser) {
+        document.cookie =
+          "userLoggedIn=true; path=/; samesite=lax; max-age=86400"; // 24 hours
+      } else {
+        document.cookie =
+          "userLoggedIn=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      }
     });
-    return () => {
-      unsubscribe();
-    };
+
+    return () => unsubscribe();
   }, []);
   const value = {
     signInWithGoogle,
@@ -57,10 +94,11 @@ const AuthProvider = ({ children }) => {
     setUser,
     loading,
     setLoading,
-    logOut,
+
     logInFunc,
     createUserFunc,
     updateProfileUser,
+    logoutUser,
   };
 
   return <AuthContext value={value}>{children}</AuthContext>;
