@@ -5,11 +5,12 @@ import MyContainer from "./MyContainer";
 import ProductCard from "./ProductCard";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
-
+import { Autoplay, Pagination } from "swiper/modules";
+import { FaArrowRight } from "react-icons/fa";
 // Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import Link from "next/link";
 
 export default function Discount() {
   const [products, setProducts] = useState([]);
@@ -34,11 +35,24 @@ export default function Discount() {
   }, []);
   return (
     <MyContainer>
-      <h1 className="title my-15">Discount</h1>
+      <div className="flex justify-between py-15 items-center mb-8">
+        <h1 className="title">Discount</h1>
+
+        <Link
+          href="/products"
+          className="flex items-center gap-1 text-purple-600 hover:text-purple-800 transition font-medium"
+        >
+          See all <FaArrowRight size={14} />
+        </Link>
+      </div>
 
       <Swiper
         loop={true}
         pagination={{ clickable: true }}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         breakpoints={{
           640: {
             slidesPerView: 2,
@@ -53,7 +67,7 @@ export default function Discount() {
             spaceBetween: 10,
           },
         }}
-        modules={[Pagination]}
+        modules={[Pagination, Autoplay]}
         className="mySwiper"
       >
         {products.map((singleProduct) => (

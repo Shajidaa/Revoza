@@ -5,11 +5,14 @@ import MyContainer from "./MyContainer";
 import ProductCard from "./ProductCard";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 
 // Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+
+import Link from "next/link";
+import { FaArrowRight } from "react-icons/fa";
 
 export default function BestSeller() {
   const [products, setProducts] = useState([]);
@@ -36,10 +39,22 @@ export default function BestSeller() {
 
   return (
     <MyContainer>
-      <h1 className="title my-15">Best Seller</h1>
+      <div className="flex justify-between py-15 items-center mb-8">
+        <h1 className="title">Best Seller</h1>
 
+        <Link
+          href="/products"
+          className="flex items-center gap-1 text-purple-600 hover:text-purple-800 transition font-medium"
+        >
+          See all <FaArrowRight size={14} />
+        </Link>
+      </div>
       <Swiper
         loop={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         pagination={{ clickable: true }}
         breakpoints={{
           640: {
@@ -55,7 +70,7 @@ export default function BestSeller() {
             spaceBetween: 10,
           },
         }}
-        modules={[Pagination]}
+        modules={[Pagination, Autoplay]}
         className="mySwiper"
       >
         {products.map((singleProduct) => (

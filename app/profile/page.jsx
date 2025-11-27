@@ -31,7 +31,7 @@ export default function ProfilePage() {
 
     loadProducts();
   }, [user?.email]);
-  console.log(cartItems);
+  // console.log(cartItems);
 
   return (
     <div className="min-h-screen bg-purple-50 py-16 px-6">

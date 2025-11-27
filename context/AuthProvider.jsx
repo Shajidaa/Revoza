@@ -51,7 +51,7 @@ const AuthProvider = ({ children }) => {
       // Sign out from Firebase
       await signOut(auth);
 
-      console.log("Firebase signout successful");
+      // console.log("Firebase signout successful");
     } catch (error) {
       console.error("Firebase signout error:", error);
       throw error;
@@ -72,7 +72,7 @@ const AuthProvider = ({ children }) => {
   // Auth State Observer
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log("Auth state changed:", currentUser);
+      // console.log("Auth state changed:", currentUser);
       setUser(currentUser);
       setLoading(false);
 

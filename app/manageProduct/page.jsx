@@ -29,11 +29,11 @@ export default function ManageProduct() {
     fetchProducts();
   }, [axiosSecure, user]);
 
-  console.log(products);
+  // console.log(products);
 
   const handleRemove = async (id) => {
     try {
-      console.log("Deleting product:", id);
+      // console.log("Deleting product:", id);
       const token = await user.getIdToken();
 
       // Show confirmation dialog
@@ -48,7 +48,7 @@ export default function ManageProduct() {
       });
 
       if (!result.isConfirmed) {
-        return; // User cancelled the deletion
+        return;
       }
 
       // Optimistically update UI first
@@ -63,7 +63,7 @@ export default function ManageProduct() {
         },
       });
 
-      console.log("✅ Delete successful:", res.data);
+      // console.log("✅ Delete successful:", res.data);
       toast.success(res.data.message || "Product deleted successfully");
     } catch (error) {
       console.error("Delete error:", error.response?.data);
