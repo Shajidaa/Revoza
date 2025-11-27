@@ -42,11 +42,10 @@ export default function ProfilePage() {
             tabIndex={0}
             className="btn btn-ghost rounded-full w-12
              h-12 p-0 border-2 border-[#580269] tooltip tooltip-bottom"
-            data-tip={user.displayName}
           >
             <Image
-              src={user.photoURL}
-              alt={user.displayName}
+              src={user?.photoURL}
+              alt={user?.displayName}
               width={48}
               height={48}
               className="w-full h-full object-cover rounded-full"
