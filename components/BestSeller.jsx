@@ -17,10 +17,14 @@ export default function BestSeller() {
   useEffect(() => {
     async function loadProducts() {
       try {
-        const res = await fetch("http://localhost:5000/bestSeller-product", {
-          cache: "no-store",
-        });
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/bestSeller-product`,
+          {
+            cache: "no-store",
+          }
+        );
         const data = await res.json();
+
         setProducts(data);
       } catch (err) {
         console.error("Error loading products:", err);

@@ -2,7 +2,7 @@
 
 // export default async function Category() {
 //   const [category, setCategory] = useState([]);
-//   const res = await fetch(`http://localhost:5000/category?category=${value}`, {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/category?category=${value}`, {
 //     cache: "no-store",
 //   });
 

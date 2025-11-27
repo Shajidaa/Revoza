@@ -28,7 +28,7 @@ export default function CreateProduct() {
       product.createdAt = new Date();
 
       const { data } = await axios.post(
-        "http://localhost:5000/products",
+        `${process.env.NEXT_PUBLIC_API_URL}/products`,
         product
       );
 

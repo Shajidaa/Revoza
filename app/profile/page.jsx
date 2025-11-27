@@ -17,7 +17,7 @@ export default function ProfilePage() {
     const loadProducts = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/add-product?email=${user.email}`,
+          `${process.env.NEXT_PUBLIC_API_URL}/add-product?email=${user.email}`,
           { credentials: "include" }
         );
         const data = await res.json();
@@ -84,14 +84,6 @@ export default function ProfilePage() {
             ))}
           </div>
         )}
-
-        {/* Order History */}
-        <h2 className="text-2xl font-bold text-gray-800 mt-12 mb-4 flex items-center gap-2">
-          <MdHistory className="text-purple-600" />
-          Order History
-        </h2>
-
-        <p className="text-gray-500">You have no past orders yet.</p>
       </div>
     </div>
   );

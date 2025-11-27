@@ -16,9 +16,12 @@ export default function ProductFilter({ allProducts }) {
       return;
     }
 
-    const res = await fetch(`http://localhost:5000/search?name=${value}`, {
-      cache: "no-store",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/search?name=${value}`,
+      {
+        cache: "no-store",
+      }
+    );
     const data = await res.json();
 
     setProducts(data);
@@ -40,7 +43,7 @@ export default function ProductFilter({ allProducts }) {
     }
 
     const res = await fetch(
-      `http://localhost:5000/category?category=${value}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/category?category=${value}`,
       { cache: "no-store" }
     );
 

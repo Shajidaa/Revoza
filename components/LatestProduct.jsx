@@ -3,9 +3,12 @@ import MyContainer from "./MyContainer";
 import ProductCard from "./ProductCard";
 
 export default async function LatestProduct() {
-  const productData = await fetch(`http://localhost:5000/latest-product`, {
-    cache: "no-store",
-  });
+  const productData = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/latest-product`,
+    {
+      cache: "no-store",
+    }
+  );
   const products = await productData.json();
   return (
     <MyContainer>

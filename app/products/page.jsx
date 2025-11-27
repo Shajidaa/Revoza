@@ -2,9 +2,10 @@ import MyContainer from "@/components/MyContainer";
 import ProductFilter from "@/components/ProductFilter";
 
 export default async function Products() {
-  const res = await fetch("http://localhost:5000/products", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`, {
     cache: "no-store",
   });
+
   const allProducts = await res.json();
 
   return (

@@ -5,7 +5,7 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "@/context/AuthProvider";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
 });
 
 const useAxiosSecure = () => {

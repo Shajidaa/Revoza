@@ -17,9 +17,12 @@ export default function Discount() {
   useEffect(() => {
     async function loadProducts() {
       try {
-        const res = await fetch("http://localhost:5000/discount-product", {
-          cache: "no-store",
-        });
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/discount-product`,
+          {
+            cache: "no-store",
+          }
+        );
         const data = await res.json();
         setProducts(data);
       } catch (err) {
