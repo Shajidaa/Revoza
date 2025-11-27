@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import { useState, useContext, useEffect } from "react";
-import useAxiosSecure from "@/Hooks/useAxiosSecure";
+// import useAxiosSecure from "@/Hooks/useAxiosSecure";
 import { AuthContext } from "@/context/AuthProvider";
 import { toast } from "react-toastify";
 import { FaShoppingCart, FaStar, FaStore, FaTag } from "react-icons/fa";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 export default function ProductDetailsClient({ product }) {
   const axiosSecure = useAxiosSecure();
