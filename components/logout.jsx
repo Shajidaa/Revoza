@@ -13,17 +13,18 @@ const LogoutButton = () => {
       // 1. Firebase logout
       await logoutUser();
 
-      // 2. Clear cookies (just these 2 lines)
       document.cookie =
         "userLoggedIn=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
       document.cookie =
         "authToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      toast.success("Logout successfully");
 
-      // 3. Redirect
-      window.location.href = "/";
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1500);
     } catch (error) {
       console.error("Logout error:", error);
-      // Error holeo redirect korbe
+
       window.location.href = "/";
     }
   };

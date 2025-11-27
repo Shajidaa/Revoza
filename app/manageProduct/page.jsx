@@ -57,11 +57,14 @@ export default function ManageProduct() {
       );
 
       // Then make the API call
-      const res = await axios.delete(`http://127.0.0.1:5000/my-product/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await axios.delete(
+        `${process.env.NEXT_PUBLIC_API_URL}/my-product/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       // console.log("✅ Delete successful:", res.data);
       toast.success(res.data.message || "Product deleted successfully");
