@@ -78,7 +78,7 @@ export default function ProductDetailsClient({ product }) {
           alt={product.title}
           width={350}
           height={350}
-          className="object-contain rounded-lg shadow-lg"
+          className="object-contain rounded-lg! shadow-lg"
         />
       </div>
 
