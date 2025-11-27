@@ -82,9 +82,9 @@ export default function CreateProduct() {
                 Select Category
               </option>
               <option>Electronics</option>
-              <option>Books</option>
-              <option>Clothing</option>
-              <option>Home Appliances</option>
+              <option>Mobile</option>
+              <option>Fashion</option>
+              <option>Laptop</option>
               <option>Other</option>
             </select>
           </div>

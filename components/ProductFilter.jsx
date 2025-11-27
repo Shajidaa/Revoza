@@ -43,7 +43,7 @@ export default function ProductFilter({ allProducts }) {
     }
 
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/category?category=${value}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/products-by-category?category=${value}`,
       { cache: "no-store" }
     );
 
@@ -67,11 +67,11 @@ export default function ProductFilter({ allProducts }) {
         {/* Category */}
         <select className="select select-bordered" onChange={handleCategory}>
           <option value="">All Category</option>
-          <option>Electronics</option>
-          <option>Books</option>
-          <option>Clothing</option>
-          <option>Home Appliances</option>
-          <option>Other</option>
+          <option value="electronics">Electronics</option>
+          <option value="mobile">Mobile</option>
+          <option value="fashion">Fashion</option>
+          <option value="laptop">Laptop</option>
+          <option value="Other">Other</option>
         </select>
       </div>
 
