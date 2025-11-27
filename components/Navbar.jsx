@@ -35,7 +35,7 @@ export default function Navbar() {
   );
 
   return (
-    <div className="navbar bg-[#E9D5EB]  lg:sticky z-1000 top-0 shadow-sm">
+    <div className="navbar bg-[#E9D5EB] sticky z-1000 top-0 shadow-sm">
       <MyContainer className="flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="text-2xl font-semibold text-gray-500 ">
@@ -91,14 +91,14 @@ export default function Navbar() {
             <div className="flex items-center gap-2">
               <Link
                 href="/login"
-                className="btn gradientBtn btn-sm md:btn-md flex items-center"
+                className="btn gradientBtn text-sm btn-sm md:btn-md flex items-center"
               >
                 <BiLogIn /> Login
               </Link>
 
               <Link
                 href="/register"
-                className="btn gradientBtn text-white btn-sm md:btn-md"
+                className="btn gradientBtn  text-sm text-white btn-sm md:btn-md"
               >
                 <PiSignInFill /> Register
               </Link>

@@ -71,7 +71,7 @@ export default function ProfilePage() {
         {loading ? (
           <p className="text-gray-500">Loading your products...</p>
         ) : cartItems.length === 0 ? (
-          <p className="text-gray-500">Your cart is empty.</p>
+          <p className="text-gray-500">Your  is empty.</p>
         ) : (
           <div className="grid md:grid-cols-2 gap-6">
             {cartItems.map((item) => (

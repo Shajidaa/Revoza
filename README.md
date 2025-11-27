@@ -51,6 +51,9 @@ react-query
 
 -**Server** Next.js API Routes, MongoDB, NextAuth, bcrypt
 
+
+
+
 ## 📦 Environment Variables
 
 To run this project, you will need to add the following variables to your .env.local file:
