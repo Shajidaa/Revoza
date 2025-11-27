@@ -51,7 +51,7 @@ export default function ProductCard({ singleProduct }) {
         </h2>
 
         {/* Description */}
-        <p className="text-sm text-gray-500 line-clamp-2">{description}</p>
+        <p className="text-sm text-gray-500 line-clamp-1">{description}</p>
 
         {/* Rating */}
         <div className="flex items-center gap-1 text-yellow-400 font-semibold">

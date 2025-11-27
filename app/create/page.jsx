@@ -47,14 +47,7 @@ export default function CreateProduct() {
 
   return (
     <div className="max-w-3xl mx-auto py-10 px-4">
-      <title>Add Product | ShopAdmin</title>
-
-      <Link
-        href={"/products"}
-        className="flex items-center text-purple-600 hover:underline mb-4"
-      >
-        <FaArrowLeft className="mr-2" size={20} /> Back to Products
-      </Link>
+      <title>Add Product | Revoza</title>
 
       <h2 className="text-2xl font-bold text-center mb-6 text-black">
         Add New Product

@@ -6,6 +6,10 @@ import { FaTrash } from "react-icons/fa";
 import Image from "next/image";
 import Swal from "sweetalert2";
 import { AuthContext } from "@/context/AuthProvider";
+import { FaMagnifyingGlass } from "react-icons/fa6";
+import Link from "next/link";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function ManageProduct() {
   const axiosSecure = useAxiosSecure();
@@ -22,36 +26,58 @@ export default function ManageProduct() {
 
   console.log(products);
 
-  const handleRemove = async (_id) => {
+  // const handleRemove = async (_id) => {
+  //   try {
+  //     const result = await Swal.fire({
+  //       title: "Are you sure?",
+  //       text: "You won't be able to revert this!",
+  //       icon: "warning",
+  //       showCancelButton: true,
+  //       confirmButtonText: "Yes, delete it!",
+  //     });
+
+  //     if (result.isConfirmed) {
+  //       const response = await axiosSecure.delete(`/my-product/${_id}`);
+
+  //       if (response.status === 200 || response.data.deletedCount > 0) {
+  //         Swal.fire("Deleted!", "Your product has been deleted.", "success");
+
+  //         setProducts((prevProducts) =>
+  //           prevProducts.filter((product) => product._id !== _id)
+  //         );
+  //       } else {
+  //         Swal.fire(
+  //           "Failed!",
+  //           "The product could not be deleted on the server.",
+  //           "error"
+  //         );
+  //       }
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //     Swal.fire("Error!", "Something went wrong while deleting.", "error");
+  //   }
+  // };
+
+  const handleRemove = async (id) => {
     try {
-      const result = await Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Yes, delete it!",
-      });
+      const token = await user.getIdToken();
+      // console.log("TOKEN EMAIL:", user.email);
 
-      if (result.isConfirmed) {
-        const response = await axiosSecure.delete(`/my-product/${_id}`);
-
-        if (response.status === 200 || response.data.deletedCount > 0) {
-          Swal.fire("Deleted!", "Your product has been deleted.", "success");
-
-          setProducts((prevProducts) =>
-            prevProducts.filter((product) => product._id !== _id)
-          );
-        } else {
-          Swal.fire(
-            "Failed!",
-            "The product could not be deleted on the server.",
-            "error"
-          );
+      const res = axios.delete(
+        `http://localhost:5000/user-product-delete/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      }
+      );
+
+      console.log("Deleted:", res.data);
+      toast.success("Product deleted");
     } catch (error) {
       console.error(error);
-      Swal.fire("Error!", "Something went wrong while deleting.", "error");
+      toast.error("Failed to delete");
     }
   };
 
@@ -100,6 +126,12 @@ export default function ManageProduct() {
                 </td>
 
                 <td>
+                  <Link
+                    href={`/products/${product._id}`}
+                    className="btn btn-xs bg-green-600 text-white hover:bg-green-700 gap-2 rounded-md"
+                  >
+                    <FaMagnifyingGlass />
+                  </Link>
                   <button
                     onClick={() => handleRemove(product._id)}
                     className="btn btn-xs bg-red-600 text-white hover:bg-red-700 rounded-md"
