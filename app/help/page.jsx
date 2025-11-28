@@ -4,26 +4,29 @@ import { MdManageAccounts } from "react-icons/md";
 import { SiTeamspeak } from "react-icons/si";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import { VscGoToEditingSession } from "react-icons/vsc";
+import MyContainer from "@/components/MyContainer";
 export default function page() {
   return (
     <div className="min-h-screen transition duration-500">
       <div className="bg-purple-100 py-16 text-center">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-          How can we help with your shopping?
-        </h1>
-        <div className="max-w-xl mx-auto flex justify-center">
-          <input
-            type="text"
-            placeholder="Search help topics..."
-            className="w-full px-5 py-3 rounded-2xl border border-purple-300 bg-white text-gray-800 shadow-inner focus:outline-none focus:ring-2 focus:ring-purple-500"
-          />
-        </div>
-        <p className="mt-3 text-sm text-gray-600 ">
-          Popular topics:{" "}
-          <span className="text-purple-600 ">
-            order tracking, returns, payment issues, account login
-          </span>
-        </p>
+        <MyContainer>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            How can we help with your shopping?
+          </h1>
+          <div className="max-w-xl mx-auto flex justify-center">
+            <input
+              type="text"
+              placeholder="Search help topics..."
+              className="w-full px-5 py-3 rounded-2xl border border-purple-300 bg-white text-gray-800 shadow-inner focus:outline-none focus:ring-2 focus:ring-purple-500"
+            />
+          </div>
+          <p className="mt-3 text-sm text-gray-600 ">
+            Popular topics:{" "}
+            <span className="text-purple-600 ">
+              order tracking, returns, payment issues, account login
+            </span>
+          </p>
+        </MyContainer>
       </div>
 
       <div className="max-w-6xl mx-auto py-12 px-6 grid md:grid-cols-3 gap-8">
