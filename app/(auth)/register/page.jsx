@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "@/context/AuthProvider";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import MyContainer from "@/components/MyContainer";
 
 const Register = () => {
   const { signInWithGoogle, setUser, createUserFunc, updateProfileUser } =
@@ -92,7 +93,7 @@ const Register = () => {
     <>
       <title>Register | Revoza</title>
 
-      <div className="flex flex-col-reverse lg:flex-row justify-center items-center gap-5 py-7 md:py-12 min-h-screen bg-purple-50 transition-colors">
+      <MyContainer className="flex flex-col-reverse lg:flex-row justify-center items-center gap-5 py-7 md:py-12 min-h-screen bg-purple-50 transition-colors">
         <div className="flex lg:w-1/2 w-full justify-center items-center">
           <div className="card w-full max-w-sm border border-purple-400 bg-white shadow-2xl rounded-xl">
             <div className="card-body">
@@ -215,7 +216,7 @@ const Register = () => {
             </div>
           </div>
         </div>
-      </div>
+      </MyContainer>
     </>
   );
 };

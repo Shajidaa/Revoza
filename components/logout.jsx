@@ -30,7 +30,7 @@ const LogoutButton = () => {
   };
 
   return (
-    <button onClick={handleLogout} className="btn btn-ghost">
+    <button onClick={handleLogout} className="btn gradientBtn">
       Logout
     </button>
   );
