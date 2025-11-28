@@ -16,5 +16,5 @@
 }
 
 .gradientBtn {
-  @apply opacity-80 bg-[#7500ac] btn text-white text-base hover:scale-102 hover:transition-all hover:opacity-100
+  @apply opacity-80 bg-[#7500ac] btn text-white md:text-base hover:scale-102 hover:transition-all hover:opacity-100
 }

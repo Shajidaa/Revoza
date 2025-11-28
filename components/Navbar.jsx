@@ -88,17 +88,17 @@ export default function Navbar() {
               </div>
             </>
           ) : (
-            <div className="flex items-center gap-2">
+            <div className="flex ml-1! items-center gap-2">
               <Link
                 href="/login"
-                className="btn gradientBtn text-sm btn-sm md:btn-md flex items-center"
+                className="btn gradientBtn  text-sm! btn-sm! md:btn-md flex items-center"
               >
                 <BiLogIn /> Login
               </Link>
 
               <Link
                 href="/register"
-                className="btn gradientBtn  text-sm text-white btn-sm md:btn-md"
+                className="btn gradientBtn   text-white text-sm! btn-sm! md:btn-md"
               >
                 <PiSignInFill /> Register
               </Link>

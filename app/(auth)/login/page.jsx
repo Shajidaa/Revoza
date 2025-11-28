@@ -6,6 +6,7 @@ import React, { useContext, useState } from "react";
 import { BsEyeFill, BsEyeSlash } from "react-icons/bs";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import MyContainer from "@/components/MyContainer";
 
 const Login = () => {
   const { signInWithGoogle, setUser, logInFunc } = useContext(AuthContext);
@@ -71,12 +72,12 @@ const Login = () => {
     <>
       <title>Login |ReVoza</title>
 
-      <div className="flex flex-col lg:flex-row justify-center items-center gap-5 py-7 md:py-12 min-h-screen bg-purple-50">
+      <MyContainer className="flex flex-col lg:flex-row justify-center items-center gap-5 py-7 md:py-12 min-h-screen bg-purple-50">
         <div className="lg:w-1/2 w-full flex justify-center items-center">
           <div className="card w-full max-w-sm border border-purple-400 bg-white shadow-2xl rounded-xl">
             <div className="card-body">
               <h1 className="text-2xl md:text-3xl font-bold text-center text-purple-600 mb-4">
-                Welcome Back to Revoza
+                Welcome Back Revoza
               </h1>
 
               {/* LOGIN FORM */}
@@ -187,7 +188,7 @@ const Login = () => {
             </div>
           </div>
         </div>
-      </div>
+      </MyContainer>
     </>
   );
 };
